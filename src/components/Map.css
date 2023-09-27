@@ -1,6 +1,6 @@
 .map-container {
-  height: 100vh;
-  width: 100%;
+  height: 100vh !important;
+  width: 100% !important;
 }
 
 .custom-marker-div {
@@ -22,27 +22,13 @@
   cursor: pointer;
 }
 
-.popup-content {
-  display: none;
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
 .features {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  overflow-x: scroll;
   margin-top: 2rem;
-  position: absolute !important;
+  position: absolute;
   z-index: 1;
 }
 
@@ -50,23 +36,28 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: black !important;
+  background: linear-gradient(to right, #001120, #00182e, #001120) !important;
+
   color: white;
 }
 
 .features > div {
+  margin-left: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+
   background: white;
   padding: 10px 15px;
   font-size: 20px;
   border-radius: 7px;
-  font-weight: 600;
+
   font-family: sans-serif;
   cursor: pointer;
 }
-
+/* .feature-text {
+  width: 100%; 
+  min-width: auto; 
+} */
 .feature-launch {
   width: 20px;
   height: 20px;
@@ -111,11 +102,24 @@
 .filter {
   padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition animation */
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Active styles for selected filter */
 .filter.active {
-  background-color: black;
+  background: linear-gradient(to right, #001120, #00182e, #001120);
+
   color: white;
+}
+.popup {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .feature-text {
+    width: 170px;
+    min-width: 130px;
+  }
 }
