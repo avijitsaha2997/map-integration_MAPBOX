@@ -3,6 +3,17 @@
   width: 100% !important;
 }
 
+.mapboxgl-ctrl-group > button {
+  width: 42px;
+  height: 42px;
+}
+
+/* a.mapboxgl-ctrl-logo.mapboxgl-compact {
+  margin-top: 20px !important;
+  width: 152px;
+  height: 152px;
+} */
+
 .custom-marker-div {
   background-color: white;
   display: flex;
@@ -14,11 +25,31 @@
   box-shadow: 1px 3px 5px 1px;
   cursor: pointer;
 }
+.custom-marker-div-active {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10%;
+  box-shadow: 1px 3px 5px 1px;
+  cursor: pointer;
+  z-index: 10;
+  transform: rotate(45deg);
+}
 
 .custom-marker {
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  cursor: pointer;
+}
+
+.custom-marker-active {
+  width: 20px;
+  height: 20px;
+  border-radius: 10%;
   cursor: pointer;
 }
 
@@ -30,6 +61,19 @@
   margin-top: 2rem;
   position: absolute;
   z-index: 1;
+}
+.features::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.features::-webkit-scrollbar-track {
+  background: transparent;
+}
+.features::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+}
+.features::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .back-button {
@@ -54,10 +98,7 @@
   font-family: sans-serif;
   cursor: pointer;
 }
-/* .feature-text {
-  width: 100%; 
-  min-width: auto; 
-} */
+
 .feature-launch {
   width: 20px;
   height: 20px;

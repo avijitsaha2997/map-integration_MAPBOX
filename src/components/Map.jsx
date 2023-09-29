@@ -6,7 +6,6 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./Map.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PopUpView from "./PopUpView";
-import { purple } from "@mui/material/colors";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYXZpaml0c2FoYTI5OTciLCJhIjoiY2xjcDM4ZWpiMXEzYjNybXFlN2ExNWtjYSJ9.l0lzw0rJpo-uIh3v7-NFdQ";
@@ -19,8 +18,15 @@ export default function Map() {
   const [zoom, setZoom] = useState(9);
   const [selectedFeature, setSelectedFeature] = useState("All");
   const [markers, setMarkers] = useState([]);
-  const [prevColor, setPrevColor] = useState(null);
-  const [customEl, setCustomEL] = useState(null);
+  const [propertyName, setPorpertyName] = useState("");
+  const [areaName, setAreaName] = useState("");
+  const [developerName, setDeveloperName] = useState("");
+  const [propertyType, setPropertyType] = useState("");
+  const [unitSize, setUnitSize] = useState("");
+  const [description, setDescription] = useState("");
+  const [popUpImg, setPopUpImg] = useState(
+    "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-1.jpg"
+  );
 
   const places = [
     {
@@ -29,6 +35,150 @@ export default function Map() {
       lng: 55.1372,
       feature: "feature launch",
       color: "rgb(199, 5, 124)",
+      property: {
+        propertyType: {
+          id: "63fefdc56023b40ac4385d00",
+          name: "Villa",
+        },
+        propertyArea: {
+          id: "63fefe6d6023b40ac4385dc3",
+          areaName: "Abu Dhabi",
+        },
+        developmentType: {
+          id: "63feff816023b40ac4385fba",
+          name: "OFF PLAN",
+        },
+        developerType: {
+          id: "63ff00c56023b40ac4386188",
+          name: "Eagle Hills",
+        },
+        amenities: {
+          description:
+            "Ramhan Island’s world-class amenities and facilities will provide an unparalleled lifestyle that will make you pampered by day and privileged by night.",
+          features:
+            "Waterfront Living#Sandbar#Eco-Parks#Swimmable Crystal Lagoon#Jogging and Running Tracks#Sports and Fitness Centre#Spa & Wellness#Infinity Pool#Floating Villas",
+        },
+        location: {
+          position: [25.2048, 55.2708],
+          locDescription:
+            "The Ramhan Villas are located in Abu Dhabi and are conveniently accessible to the city’s mainland and other places. Ramhan Island will become one of the most desirable spots in the capital of the United Arab Emirates.",
+          nearby: [
+            {
+              position: [25.2048, 55.2708],
+              title: "10 Mins Yas Island",
+              icon: "island",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "15 Mins Sheikh Zayed Grand Mosque",
+              icon: "mosque",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "15 Mins Abu Dhabi Airport",
+              icon: "airport",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "18 Mins Saadiyat Island",
+              icon: "island",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "20 Mins Drive Lovre Abu Dhabi",
+              icon: "city",
+            },
+          ],
+        },
+        unitType: {
+          title: "Bedrooms",
+          count: "1",
+          size: "4, 5, 6, 7",
+        },
+        createBy: {
+          id: "63fdba8b7e7c44513a8a3b9e",
+          fullName: "Bellal Hossain",
+        },
+        isFeatured: true,
+        _id: "63ff04846023b40ac43861ce",
+        propertyNo: 1,
+        lang: "en",
+        propertyName: "Ramhan Island",
+        propertyDescription:
+          "The Heavenly Ramhan Island is completely unspoiled and natural, with bays, beaches, and mangrove trees just waiting to be explored by the adventurous traveler. Ramhan By Eagle Hills, is located on an island in Abu Dhabi, is a circular island due to its geological formation.\r\n\r\nThe incredible design of this masterplan features 3, 4, 5, 6 & 7 Bedroom beachfront luxury villas with top-tier facilities, a marina filled with cutting-edge retail and dining options, 5-star accommodations in the form of a hotel and serviced apartments, and a wellness center with open bay views and peaceful surroundings.",
+        areaSize: "7,539 sft",
+        highlights:
+          "Luxury waterfront villas#Starting from AED 6.4M#Hotel and serviced residences#Private beach for every unit#Magnificent sea views#Premium detached villas#World-class Marina#Floating villas on the water#120 Marina Boat Berths",
+        completion: "2025",
+        startingPrice: 6400000,
+        paymentPlan: [
+          {
+            milestone: "Price starting at AED 6.4M to 24.5M",
+            installment: 1,
+            percentage: "30%",
+            date: "2023-03-01T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "EMI",
+            installment: 6,
+            percentage: "20%",
+            date: "2023-03-14T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "Handover ",
+            installment: 1,
+            percentage: "60%",
+            date: "2023-03-29T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "Pay via cash",
+            installment: 1,
+            percentage: "100%",
+            date: "2023-03-01T00:00:00.000Z",
+            notes: "1",
+          },
+        ],
+        brochure: "https://www.africau.edu/images/default/sample.pdf",
+        images: [
+          {
+            type: "cover",
+            metaDescription: "cover",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-1.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-4.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-5.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-6.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-7.jpg",
+          },
+        ],
+        videos: [
+          {
+            type: "youtube",
+            path: "https://www.youtube.com/watch?v=dcGnNft3nvg&ab_channel=ProvidentRealEstate",
+          },
+        ],
+        createdAt: "2023-03-01T07:53:40.738Z",
+        updatedAt: "2023-03-01T07:53:40.738Z",
+        __v: 0,
+      },
     },
     {
       name: "Burj Al Arab",
@@ -36,6 +186,150 @@ export default function Map() {
       lng: 55.1855,
       feature: "newly launched",
       color: "green",
+      property: {
+        propertyType: {
+          id: "63fefdc56023b40ac4385d00",
+          name: "Villa",
+        },
+        propertyArea: {
+          id: "63fefe6d6023b40ac4385dc3",
+          areaName: "Abu Dhabi",
+        },
+        developmentType: {
+          id: "63feff816023b40ac4385fba",
+          name: "OFF PLAN",
+        },
+        developerType: {
+          id: "63ff00c56023b40ac4386188",
+          name: "Eagle Hills",
+        },
+        amenities: {
+          description:
+            "Ramhan Island’s world-class amenities and facilities will provide an unparalleled lifestyle that will make you pampered by day and privileged by night.",
+          features:
+            "Waterfront Living#Sandbar#Eco-Parks#Swimmable Crystal Lagoon#Jogging and Running Tracks#Sports and Fitness Centre#Spa & Wellness#Infinity Pool#Floating Villas",
+        },
+        location: {
+          position: [25.2048, 55.2708],
+          locDescription:
+            "The Ramhan Villas are located in Abu Dhabi and are conveniently accessible to the city’s mainland and other places. Ramhan Island will become one of the most desirable spots in the capital of the United Arab Emirates.",
+          nearby: [
+            {
+              position: [25.2048, 55.2708],
+              title: "10 Mins Yas Island",
+              icon: "island",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "15 Mins Sheikh Zayed Grand Mosque",
+              icon: "mosque",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "15 Mins Abu Dhabi Airport",
+              icon: "airport",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "18 Mins Saadiyat Island",
+              icon: "island",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "20 Mins Drive Lovre Abu Dhabi",
+              icon: "city",
+            },
+          ],
+        },
+        unitType: {
+          title: "Bedrooms",
+          count: "1",
+          size: "4, 5, 6, 7",
+        },
+        createBy: {
+          id: "63fdba8b7e7c44513a8a3b9e",
+          fullName: "Bellal Hossain",
+        },
+        isFeatured: true,
+        _id: "63ff04846023b40ac43861ce",
+        propertyNo: 1,
+        lang: "en",
+        propertyName: "Ramhan Island",
+        propertyDescription:
+          "The Heavenly Ramhan Island is completely unspoiled and natural, with bays, beaches, and mangrove trees just waiting to be explored by the adventurous traveler. Ramhan By Eagle Hills, is located on an island in Abu Dhabi, is a circular island due to its geological formation.\r\n\r\nThe incredible design of this masterplan features 3, 4, 5, 6 & 7 Bedroom beachfront luxury villas with top-tier facilities, a marina filled with cutting-edge retail and dining options, 5-star accommodations in the form of a hotel and serviced apartments, and a wellness center with open bay views and peaceful surroundings.",
+        areaSize: "7,539 sft",
+        highlights:
+          "Luxury waterfront villas#Starting from AED 6.4M#Hotel and serviced residences#Private beach for every unit#Magnificent sea views#Premium detached villas#World-class Marina#Floating villas on the water#120 Marina Boat Berths",
+        completion: "2025",
+        startingPrice: 6400000,
+        paymentPlan: [
+          {
+            milestone: "Price starting at AED 6.4M to 24.5M",
+            installment: 1,
+            percentage: "30%",
+            date: "2023-03-01T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "EMI",
+            installment: 6,
+            percentage: "20%",
+            date: "2023-03-14T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "Handover ",
+            installment: 1,
+            percentage: "60%",
+            date: "2023-03-29T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "Pay via cash",
+            installment: 1,
+            percentage: "100%",
+            date: "2023-03-01T00:00:00.000Z",
+            notes: "1",
+          },
+        ],
+        brochure: "https://www.africau.edu/images/default/sample.pdf",
+        images: [
+          {
+            type: "cover",
+            metaDescription: "cover",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/03/canalH-4.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-4.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-5.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-6.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-7.jpg",
+          },
+        ],
+        videos: [
+          {
+            type: "youtube",
+            path: "https://www.youtube.com/watch?v=dcGnNft3nvg&ab_channel=ProvidentRealEstate",
+          },
+        ],
+        createdAt: "2023-03-01T07:53:40.738Z",
+        updatedAt: "2023-03-01T07:53:40.738Z",
+        __v: 0,
+      },
     },
     {
       name: "Nakhlat Jabal Ali",
@@ -43,6 +337,151 @@ export default function Map() {
       lng: 54.9889,
       feature: "high demand",
       color: "blue",
+
+      property: {
+        propertyType: {
+          id: "63fefdc56023b40ac4385d00",
+          name: "Villa",
+        },
+        propertyArea: {
+          id: "63fefe6d6023b40ac4385dc3",
+          areaName: "Abu Dhabi",
+        },
+        developmentType: {
+          id: "63feff816023b40ac4385fba",
+          name: "OFF PLAN",
+        },
+        developerType: {
+          id: "63ff00c56023b40ac4386188",
+          name: "Eagle Hills",
+        },
+        amenities: {
+          description:
+            "Ramhan Island’s world-class amenities and facilities will provide an unparalleled lifestyle that will make you pampered by day and privileged by night.",
+          features:
+            "Waterfront Living#Sandbar#Eco-Parks#Swimmable Crystal Lagoon#Jogging and Running Tracks#Sports and Fitness Centre#Spa & Wellness#Infinity Pool#Floating Villas",
+        },
+        location: {
+          position: [25.2048, 55.2708],
+          locDescription:
+            "The Ramhan Villas are located in Abu Dhabi and are conveniently accessible to the city’s mainland and other places. Ramhan Island will become one of the most desirable spots in the capital of the United Arab Emirates.",
+          nearby: [
+            {
+              position: [25.2048, 55.2708],
+              title: "10 Mins Yas Island",
+              icon: "island",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "15 Mins Sheikh Zayed Grand Mosque",
+              icon: "mosque",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "15 Mins Abu Dhabi Airport",
+              icon: "airport",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "18 Mins Saadiyat Island",
+              icon: "island",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "20 Mins Drive Lovre Abu Dhabi",
+              icon: "city",
+            },
+          ],
+        },
+        unitType: {
+          title: "Bedrooms",
+          count: "1",
+          size: "4, 5, 6, 7",
+        },
+        createBy: {
+          id: "63fdba8b7e7c44513a8a3b9e",
+          fullName: "Bellal Hossain",
+        },
+        isFeatured: true,
+        _id: "63ff04846023b40ac43861ce",
+        propertyNo: 1,
+        lang: "en",
+        propertyName: "Ramhan Island",
+        propertyDescription:
+          "The Heavenly Ramhan Island is completely unspoiled and natural, with bays, beaches, and mangrove trees just waiting to be explored by the adventurous traveler. Ramhan By Eagle Hills, is located on an island in Abu Dhabi, is a circular island due to its geological formation.\r\n\r\nThe incredible design of this masterplan features 3, 4, 5, 6 & 7 Bedroom beachfront luxury villas with top-tier facilities, a marina filled with cutting-edge retail and dining options, 5-star accommodations in the form of a hotel and serviced apartments, and a wellness center with open bay views and peaceful surroundings.",
+        areaSize: "7,539 sft",
+        highlights:
+          "Luxury waterfront villas#Starting from AED 6.4M#Hotel and serviced residences#Private beach for every unit#Magnificent sea views#Premium detached villas#World-class Marina#Floating villas on the water#120 Marina Boat Berths",
+        completion: "2025",
+        startingPrice: 6400000,
+        paymentPlan: [
+          {
+            milestone: "Price starting at AED 6.4M to 24.5M",
+            installment: 1,
+            percentage: "30%",
+            date: "2023-03-01T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "EMI",
+            installment: 6,
+            percentage: "20%",
+            date: "2023-03-14T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "Handover ",
+            installment: 1,
+            percentage: "60%",
+            date: "2023-03-29T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "Pay via cash",
+            installment: 1,
+            percentage: "100%",
+            date: "2023-03-01T00:00:00.000Z",
+            notes: "1",
+          },
+        ],
+        brochure: "https://www.africau.edu/images/default/sample.pdf",
+        images: [
+          {
+            type: "cover",
+            metaDescription: "cover",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/03/canalH-2.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-4.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-5.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-6.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-7.jpg",
+          },
+        ],
+        videos: [
+          {
+            type: "youtube",
+            path: "https://www.youtube.com/watch?v=dcGnNft3nvg&ab_channel=ProvidentRealEstate",
+          },
+        ],
+        createdAt: "2023-03-01T07:53:40.738Z",
+        updatedAt: "2023-03-01T07:53:40.738Z",
+        __v: 0,
+      },
     },
     {
       name: "The Palm Jabel Ali",
@@ -50,6 +489,150 @@ export default function Map() {
       lng: 55.0057,
       feature: "last units",
       color: "rgb(228, 194, 0)",
+      property: {
+        propertyType: {
+          id: "63fefdc56023b40ac4385d00",
+          name: "Villa",
+        },
+        propertyArea: {
+          id: "63fefe6d6023b40ac4385dc3",
+          areaName: "Abu Dhabi",
+        },
+        developmentType: {
+          id: "63feff816023b40ac4385fba",
+          name: "OFF PLAN",
+        },
+        developerType: {
+          id: "63ff00c56023b40ac4386188",
+          name: "Eagle Hills",
+        },
+        amenities: {
+          description:
+            "Ramhan Island’s world-class amenities and facilities will provide an unparalleled lifestyle that will make you pampered by day and privileged by night.",
+          features:
+            "Waterfront Living#Sandbar#Eco-Parks#Swimmable Crystal Lagoon#Jogging and Running Tracks#Sports and Fitness Centre#Spa & Wellness#Infinity Pool#Floating Villas",
+        },
+        location: {
+          position: [25.2048, 55.2708],
+          locDescription:
+            "The Ramhan Villas are located in Abu Dhabi and are conveniently accessible to the city’s mainland and other places. Ramhan Island will become one of the most desirable spots in the capital of the United Arab Emirates.",
+          nearby: [
+            {
+              position: [25.2048, 55.2708],
+              title: "10 Mins Yas Island",
+              icon: "island",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "15 Mins Sheikh Zayed Grand Mosque",
+              icon: "mosque",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "15 Mins Abu Dhabi Airport",
+              icon: "airport",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "18 Mins Saadiyat Island",
+              icon: "island",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "20 Mins Drive Lovre Abu Dhabi",
+              icon: "city",
+            },
+          ],
+        },
+        unitType: {
+          title: "Bedrooms",
+          count: "1",
+          size: "4, 5, 6, 7",
+        },
+        createBy: {
+          id: "63fdba8b7e7c44513a8a3b9e",
+          fullName: "Bellal Hossain",
+        },
+        isFeatured: true,
+        _id: "63ff04846023b40ac43861ce",
+        propertyNo: 1,
+        lang: "en",
+        propertyName: "Ramhan Island",
+        propertyDescription:
+          "The Heavenly Ramhan Island is completely unspoiled and natural, with bays, beaches, and mangrove trees just waiting to be explored by the adventurous traveler. Ramhan By Eagle Hills, is located on an island in Abu Dhabi, is a circular island due to its geological formation.\r\n\r\nThe incredible design of this masterplan features 3, 4, 5, 6 & 7 Bedroom beachfront luxury villas with top-tier facilities, a marina filled with cutting-edge retail and dining options, 5-star accommodations in the form of a hotel and serviced apartments, and a wellness center with open bay views and peaceful surroundings.",
+        areaSize: "7,539 sft",
+        highlights:
+          "Luxury waterfront villas#Starting from AED 6.4M#Hotel and serviced residences#Private beach for every unit#Magnificent sea views#Premium detached villas#World-class Marina#Floating villas on the water#120 Marina Boat Berths",
+        completion: "2025",
+        startingPrice: 6400000,
+        paymentPlan: [
+          {
+            milestone: "Price starting at AED 6.4M to 24.5M",
+            installment: 1,
+            percentage: "30%",
+            date: "2023-03-01T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "EMI",
+            installment: 6,
+            percentage: "20%",
+            date: "2023-03-14T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "Handover ",
+            installment: 1,
+            percentage: "60%",
+            date: "2023-03-29T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "Pay via cash",
+            installment: 1,
+            percentage: "100%",
+            date: "2023-03-01T00:00:00.000Z",
+            notes: "1",
+          },
+        ],
+        brochure: "https://www.africau.edu/images/default/sample.pdf",
+        images: [
+          {
+            type: "cover",
+            metaDescription: "cover",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/03/canalH-3.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-4.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-5.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-6.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-7.jpg",
+          },
+        ],
+        videos: [
+          {
+            type: "youtube",
+            path: "https://www.youtube.com/watch?v=dcGnNft3nvg&ab_channel=ProvidentRealEstate",
+          },
+        ],
+        createdAt: "2023-03-01T07:53:40.738Z",
+        updatedAt: "2023-03-01T07:53:40.738Z",
+        __v: 0,
+      },
     },
     {
       name: "Al Barsha",
@@ -57,152 +640,152 @@ export default function Map() {
       lng: 55.1985,
       feature: "out of stocks",
       color: "red",
+      property: {
+        propertyType: {
+          id: "63fefdc56023b40ac4385d00",
+          name: "Villa",
+        },
+        propertyArea: {
+          id: "63fefe6d6023b40ac4385dc3",
+          areaName: "Abu Dhabi",
+        },
+        developmentType: {
+          id: "63feff816023b40ac4385fba",
+          name: "OFF PLAN",
+        },
+        developerType: {
+          id: "63ff00c56023b40ac4386188",
+          name: "Eagle Hills",
+        },
+        amenities: {
+          description:
+            "Ramhan Island’s world-class amenities and facilities will provide an unparalleled lifestyle that will make you pampered by day and privileged by night.",
+          features:
+            "Waterfront Living#Sandbar#Eco-Parks#Swimmable Crystal Lagoon#Jogging and Running Tracks#Sports and Fitness Centre#Spa & Wellness#Infinity Pool#Floating Villas",
+        },
+        location: {
+          position: [25.2048, 55.2708],
+          locDescription:
+            "The Ramhan Villas are located in Abu Dhabi and are conveniently accessible to the city’s mainland and other places. Ramhan Island will become one of the most desirable spots in the capital of the United Arab Emirates.",
+          nearby: [
+            {
+              position: [25.2048, 55.2708],
+              title: "10 Mins Yas Island",
+              icon: "island",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "15 Mins Sheikh Zayed Grand Mosque",
+              icon: "mosque",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "15 Mins Abu Dhabi Airport",
+              icon: "airport",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "18 Mins Saadiyat Island",
+              icon: "island",
+            },
+            {
+              position: [25.2048, 55.2708],
+              title: "20 Mins Drive Lovre Abu Dhabi",
+              icon: "city",
+            },
+          ],
+        },
+        unitType: {
+          title: "Bedrooms",
+          count: "1",
+          size: "4, 5, 6, 7",
+        },
+        createBy: {
+          id: "63fdba8b7e7c44513a8a3b9e",
+          fullName: "Bellal Hossain",
+        },
+        isFeatured: true,
+        _id: "63ff04846023b40ac43861ce",
+        propertyNo: 1,
+        lang: "en",
+        propertyName: "Ramhan Island",
+        propertyDescription:
+          "The Heavenly Ramhan Island is completely unspoiled and natural, with bays, beaches, and mangrove trees just waiting to be explored by the adventurous traveler. Ramhan By Eagle Hills, is located on an island in Abu Dhabi, is a circular island due to its geological formation.\r\n\r\nThe incredible design of this masterplan features 3, 4, 5, 6 & 7 Bedroom beachfront luxury villas with top-tier facilities, a marina filled with cutting-edge retail and dining options, 5-star accommodations in the form of a hotel and serviced apartments, and a wellness center with open bay views and peaceful surroundings.",
+        areaSize: "7,539 sft",
+        highlights:
+          "Luxury waterfront villas#Starting from AED 6.4M#Hotel and serviced residences#Private beach for every unit#Magnificent sea views#Premium detached villas#World-class Marina#Floating villas on the water#120 Marina Boat Berths",
+        completion: "2025",
+        startingPrice: 6400000,
+        paymentPlan: [
+          {
+            milestone: "Price starting at AED 6.4M to 24.5M",
+            installment: 1,
+            percentage: "30%",
+            date: "2023-03-01T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "EMI",
+            installment: 6,
+            percentage: "20%",
+            date: "2023-03-14T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "Handover ",
+            installment: 1,
+            percentage: "60%",
+            date: "2023-03-29T00:00:00.000Z",
+            notes: "1",
+          },
+          {
+            milestone: "Pay via cash",
+            installment: 1,
+            percentage: "100%",
+            date: "2023-03-01T00:00:00.000Z",
+            notes: "1",
+          },
+        ],
+        brochure: "https://www.africau.edu/images/default/sample.pdf",
+        images: [
+          {
+            type: "cover",
+            metaDescription: "cover",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/03/canalH-1.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-4.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-5.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-6.jpg",
+          },
+          {
+            type: "gallery",
+            metaDescription: "gallery",
+            path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-7.jpg",
+          },
+        ],
+        videos: [
+          {
+            type: "youtube",
+            path: "https://www.youtube.com/watch?v=dcGnNft3nvg&ab_channel=ProvidentRealEstate",
+          },
+        ],
+        createdAt: "2023-03-01T07:53:40.738Z",
+        updatedAt: "2023-03-01T07:53:40.738Z",
+        __v: 0,
+      },
     },
   ];
-  const property = {
-    propertyType: {
-      id: "63fefdc56023b40ac4385d00",
-      name: "Villa",
-    },
-    propertyArea: {
-      id: "63fefe6d6023b40ac4385dc3",
-      areaName: "Abu Dhabi",
-    },
-    developmentType: {
-      id: "63feff816023b40ac4385fba",
-      name: "OFF PLAN",
-    },
-    developerType: {
-      id: "63ff00c56023b40ac4386188",
-      name: "Eagle Hills",
-    },
-    amenities: {
-      description:
-        "Ramhan Island’s world-class amenities and facilities will provide an unparalleled lifestyle that will make you pampered by day and privileged by night.",
-      features:
-        "Waterfront Living#Sandbar#Eco-Parks#Swimmable Crystal Lagoon#Jogging and Running Tracks#Sports and Fitness Centre#Spa & Wellness#Infinity Pool#Floating Villas",
-    },
-    location: {
-      position: [25.2048, 55.2708],
-      locDescription:
-        "The Ramhan Villas are located in Abu Dhabi and are conveniently accessible to the city’s mainland and other places. Ramhan Island will become one of the most desirable spots in the capital of the United Arab Emirates.",
-      nearby: [
-        {
-          position: [25.2048, 55.2708],
-          title: "10 Mins Yas Island",
-          icon: "island",
-        },
-        {
-          position: [25.2048, 55.2708],
-          title: "15 Mins Sheikh Zayed Grand Mosque",
-          icon: "mosque",
-        },
-        {
-          position: [25.2048, 55.2708],
-          title: "15 Mins Abu Dhabi Airport",
-          icon: "airport",
-        },
-        {
-          position: [25.2048, 55.2708],
-          title: "18 Mins Saadiyat Island",
-          icon: "island",
-        },
-        {
-          position: [25.2048, 55.2708],
-          title: "20 Mins Drive Lovre Abu Dhabi",
-          icon: "city",
-        },
-      ],
-    },
-    unitType: {
-      title: "Bedrooms",
-      count: "1",
-      size: "4, 5, 6, 7",
-    },
-    createBy: {
-      id: "63fdba8b7e7c44513a8a3b9e",
-      fullName: "Bellal Hossain",
-    },
-    isFeatured: true,
-    _id: "63ff04846023b40ac43861ce",
-    propertyNo: 1,
-    lang: "en",
-    propertyName: "Ramhan Island",
-    propertyDescription:
-      "The Heavenly Ramhan Island is completely unspoiled and natural, with bays, beaches, and mangrove trees just waiting to be explored by the adventurous traveler. Ramhan By Eagle Hills, is located on an island in Abu Dhabi, is a circular island due to its geological formation.\r\n\r\nThe incredible design of this masterplan features 3, 4, 5, 6 & 7 Bedroom beachfront luxury villas with top-tier facilities, a marina filled with cutting-edge retail and dining options, 5-star accommodations in the form of a hotel and serviced apartments, and a wellness center with open bay views and peaceful surroundings.",
-    areaSize: "7,539 sft",
-    highlights:
-      "Luxury waterfront villas#Starting from AED 6.4M#Hotel and serviced residences#Private beach for every unit#Magnificent sea views#Premium detached villas#World-class Marina#Floating villas on the water#120 Marina Boat Berths",
-    completion: "2025",
-    startingPrice: 6400000,
-    paymentPlan: [
-      {
-        milestone: "Price starting at AED 6.4M to 24.5M",
-        installment: 1,
-        percentage: "30%",
-        date: "2023-03-01T00:00:00.000Z",
-        notes: "1",
-      },
-      {
-        milestone: "EMI",
-        installment: 6,
-        percentage: "20%",
-        date: "2023-03-14T00:00:00.000Z",
-        notes: "1",
-      },
-      {
-        milestone: "Handover ",
-        installment: 1,
-        percentage: "60%",
-        date: "2023-03-29T00:00:00.000Z",
-        notes: "1",
-      },
-      {
-        milestone: "Pay via cash",
-        installment: 1,
-        percentage: "100%",
-        date: "2023-03-01T00:00:00.000Z",
-        notes: "1",
-      },
-    ],
-    brochure: "https://www.africau.edu/images/default/sample.pdf",
-    images: [
-      {
-        type: "cover",
-        metaDescription: "cover",
-        path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-1.jpg",
-      },
-      {
-        type: "gallery",
-        metaDescription: "gallery",
-        path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-4.jpg",
-      },
-      {
-        type: "gallery",
-        metaDescription: "gallery",
-        path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-5.jpg",
-      },
-      {
-        type: "gallery",
-        metaDescription: "gallery",
-        path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-6.jpg",
-      },
-      {
-        type: "gallery",
-        metaDescription: "gallery",
-        path: "https://www.offplan-dubai.com/wp-content/uploads/2023/02/ramhan-7.jpg",
-      },
-    ],
-    videos: [
-      {
-        type: "youtube",
-        path: "https://www.youtube.com/watch?v=dcGnNft3nvg&ab_channel=ProvidentRealEstate",
-      },
-    ],
-    createdAt: "2023-03-01T07:53:40.738Z",
-    updatedAt: "2023-03-01T07:53:40.738Z",
-    __v: 0,
-  };
 
   useEffect(() => {
     if (map.current) {
@@ -223,6 +806,9 @@ export default function Map() {
       marker.remove();
     });
     const popup = document.getElementById("popup");
+    let selectedMarker = null;
+    let selectedMarkerDiv = null;
+    let prevColor = null;
 
     places.forEach((item) => {
       if (selectedFeature === "All" || item.feature === selectedFeature) {
@@ -235,10 +821,62 @@ export default function Map() {
 
         customMarkerElement.appendChild(customMarkerElement1);
 
+        customMarkerElement.addEventListener("mouseleave", (e) => {
+          if (map.current) {
+            map.current.on("click", (e) => {
+              popup.style.display = "none";
+              if (selectedMarker) {
+                selectedMarker.style.backgroundColor = prevColor;
+                selectedMarkerDiv.classList.remove("custom-marker-div-active");
+                selectedMarkerDiv.classList.add("custom-marker-div");
+                selectedMarker.classList.remove("custom-marker-active");
+                selectedMarker.classList.add("custom-marker");
+              }
+            });
+          }
+        });
+
+        let img = item.property?.images.filter((image) => {
+          if (image.type === "cover") {
+            console.log(image.path);
+            return image.path;
+          }
+        });
+
+        let popUpPropertyName = item.property?.propertyName;
+        let popUpAreaName = item.property.propertyArea.areaName;
+        let popUpDeveloperName = item.property.developerType.name;
+        let popUpPropertyType = item.property.propertyType.name;
+        let popUpUnitSize = item.property.unitType.size;
+        let popUpDescription = item.property.amenities.description;
+
         customMarkerElement.addEventListener("click", () => {
-          customMarkerElement1.style.backgroundColor = "#000F1D";
+          setPorpertyName(popUpPropertyName);
+          setAreaName(popUpAreaName);
+          setDeveloperName(popUpDeveloperName);
+          setPropertyType(popUpPropertyType);
+          setUnitSize(popUpUnitSize);
+          setDescription(popUpDescription);
+          setPopUpImg(img);
           popup.style.display = "flex";
           popup.style.justifyContent = "center";
+
+          if (selectedMarker) {
+            selectedMarker.style.backgroundColor = prevColor;
+            selectedMarkerDiv.classList.remove("custom-marker-div-active");
+            selectedMarkerDiv.classList.add("custom-marker-div");
+            selectedMarker.classList.remove("custom-marker-active");
+            selectedMarker.classList.add("custom-marker");
+          }
+          customMarkerElement1.style.backgroundColor = "#00182e";
+          customMarkerElement.classList.remove("custom-marker-div");
+          customMarkerElement.classList.add("custom-marker-div-active");
+          customMarkerElement1.classList.remove("custom-marker");
+          customMarkerElement1.classList.add("custom-marker-active");
+
+          selectedMarker = customMarkerElement1;
+          selectedMarkerDiv = customMarkerElement;
+          prevColor = item.color;
         });
 
         const marker = new mapboxgl.Marker({ element: customMarkerElement })
@@ -323,17 +961,13 @@ export default function Map() {
       <div ref={mapContainer} className="map-container" />
       <div id="popup" className="popup">
         <PopUpView
-          coverImage={property.images.filter((image) => {
-            if (image.type === "cover") {
-              return image.path;
-            }
-          })}
-          propertyName={property.propertyName}
-          areaName={property.propertyArea.areaName}
-          developerName={property.developerType.name}
-          propertyType={property.propertyType.name}
-          unitSize={property.unitType.size}
-          description={property.amenities.description}
+          coverImage={popUpImg}
+          propertyName={propertyName}
+          areaName={areaName}
+          developerName={developerName}
+          propertyType={propertyType}
+          unitSize={unitSize}
+          description={description}
         />
       </div>
     </>
