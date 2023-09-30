@@ -810,6 +810,26 @@ export default function Map() {
     let selectedMarkerDiv = null;
     let prevColor = null;
 
+    const mapContainer = document.querySelector(".map-container");
+    function handleMapContainerClick(event) {
+      const isMarker = event.target.closest(".custom-marker");
+
+      if (!isMarker) {
+        if (selectedMarker) {
+          popup.style.display = "none";
+
+          selectedMarker.style.backgroundColor = prevColor;
+          selectedMarkerDiv.classList.remove("custom-marker-div-active");
+          selectedMarkerDiv.classList.add("custom-marker-div");
+          selectedMarker.classList.remove("custom-marker-active");
+          selectedMarker.classList.add("custom-marker");
+          selectedMarker = null;
+        }
+        console.log("Clicked on the map");
+      }
+    }
+    mapContainer.addEventListener("click", handleMapContainerClick);
+
     places.forEach((item) => {
       if (selectedFeature === "All" || item.feature === selectedFeature) {
         const customMarkerElement = document.createElement("div");
@@ -821,24 +841,8 @@ export default function Map() {
 
         customMarkerElement.appendChild(customMarkerElement1);
 
-        customMarkerElement.addEventListener("mouseleave", (e) => {
-          if (map.current) {
-            map.current.on("click", (e) => {
-              popup.style.display = "none";
-              if (selectedMarker) {
-                selectedMarker.style.backgroundColor = prevColor;
-                selectedMarkerDiv.classList.remove("custom-marker-div-active");
-                selectedMarkerDiv.classList.add("custom-marker-div");
-                selectedMarker.classList.remove("custom-marker-active");
-                selectedMarker.classList.add("custom-marker");
-              }
-            });
-          }
-        });
-
         let img = item.property?.images.filter((image) => {
           if (image.type === "cover") {
-            console.log(image.path);
             return image.path;
           }
         });
@@ -850,7 +854,8 @@ export default function Map() {
         let popUpUnitSize = item.property.unitType.size;
         let popUpDescription = item.property.amenities.description;
 
-        customMarkerElement.addEventListener("click", () => {
+        customMarkerElement.addEventListener("click", (e) => {
+          e.stopPropagation();
           setPorpertyName(popUpPropertyName);
           setAreaName(popUpAreaName);
           setDeveloperName(popUpDeveloperName);
@@ -894,6 +899,8 @@ export default function Map() {
     });
 
     return () => {
+      mapContainer.removeEventListener("click", handleMapContainerClick);
+
       markers.forEach((marker) => {
         marker.remove();
         popup.style.display = "none";
