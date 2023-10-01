@@ -5,7 +5,7 @@ import iconBed from "../assets/property details page/icon-bed.svg";
 import iconBuilding from "../assets/property details page/icon-building.svg";
 function PopUpView(props) {
   return (
-    <div className="px-1 py-3 md:w-[35%]">
+    <div className="px-1 py-3 md:w-[35%] z-20">
       <div className="flex flex-wrap border bg-gradient-to-r from-[#001120] via-[#00182E] to-[#001120] border-[#D9D9D9] rounded-lg overflow-clip p-1">
         <div className="w-[40%] rounded-md overflow-hidden">
           <img

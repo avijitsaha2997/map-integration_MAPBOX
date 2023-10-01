@@ -1,3 +1,55 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  }
+}
+
+.features-div {
+  @apply ml-10 flex items-center bg-white py-3 px-8 text-lg rounded-md cursor-pointer;
+}
+
+.active {
+  @apply bg-gradient-to-r from-[#001120] via-[#00182e] to-[#001120] text-white;
+}
+
+.back-button {
+  @apply ml-10 py-3 px-8 text-lg rounded-md cursor-pointer flex items-center justify-around !bg-gradient-to-r from-[#001120] via-[#00182e] to-[#001120] text-white;
+}
+
+.custom-marker-div {
+  @apply bg-white flex items-center justify-center w-8 h-8 rounded-full shadow-[1px_3px_5px_1px_rgb(0,0,0,0.9)] z-10 cursor-pointer;
+}
+
+.custom-marker-div-active {
+  @apply bg-white flex items-center justify-center w-8 h-8  rounded-md shadow-[1px_3px_5px_1px_rgb(0,0,0,0.9)] z-20 cursor-pointer;
+}
+
+.custom-marker {
+  @apply w-6 h-6 rounded-full;
+}
+
+.custom-marker-active {
+  @apply w-6 h-6 rounded-md;
+}
+
+.feature {
+  @apply w-6 h-6 mr-6 rounded-full cursor-pointer;
+}
+
+.mapboxgl-ctrl-group > button {
+  @apply w-9 h-10;
+}
+
+.mapboxgl-ctrl-top-right {
+  @apply z-10;
+}
